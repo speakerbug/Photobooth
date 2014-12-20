@@ -33,6 +33,7 @@ def terminate():
     
 def takeAPic():
     with picamera.PiCamera() as camera:
+	camera.led = False
         camera.hflip=True
         camera.start_preview()
         sleep(2)
