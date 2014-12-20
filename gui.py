@@ -18,9 +18,9 @@ def createDisplay():
     # create the tk window - within which
     # everything else will be built.
     v = StringVar()
+    v.set("Click the button below to take a picture!")
     tk = Tk()
     textlabel = Label(tk, textvariable=v, bg="green", fg="white")
-    v.set("Click the button below to take a picture!")
     textlabel.pack(fill=X)
     picBtn = Button(tk, text="Take a Picture", command=takeAPic)
     picBtn.pack(fill=X)
