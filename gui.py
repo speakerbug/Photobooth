@@ -20,7 +20,7 @@ def createDisplay():
     tk = Tk()
     v = StringVar()
     v.set("Click the button below to take a picture!")
-    textlabel = Label(tk, textvariable=v, bg="green", fg="black")
+    textlabel = Label(tk, textvariable=v, bg="green", fg="black", font=("Helvetica", 24))
     textlabel.pack(fill=X)
     picBtn = Button(tk, text="Take a Picture", command=takeAPic)
     picBtn.pack(fill=X)
