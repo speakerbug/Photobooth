@@ -16,9 +16,12 @@ def createDisplay():
     # create the tk window - within which
     # everything else will be built.
     tk = Tk()
+    w, h = tk.winfo_screenwidth(), tk.winfo_screenheight()
+    tk.overrideredirect(1)
+    tk.gemotery("%dx%d+0+0" % (w, h))
     #Add a canvas area ready for drawing on
-    canvas = Canvas(tk, width=WINDOW_W, height=WINDOW_H)
-    canvas.pack()
+    #canvas = Canvas(tk, width=WINDOW_W, height=WINDOW_H)
+    #canvas.pack()
     #Add an exit button
     btn = Button(tk, text="Exit", command=terminate)
     btn.pack()
@@ -33,7 +36,7 @@ def terminate():
     
 def takeAPic():
     with picamera.PiCamera() as camera:
-	camera.led = False
+        camera.led = False
         camera.hflip=True
         camera.start_preview()
         sleep(2)
