@@ -36,7 +36,7 @@ def takeAPic():
         camera.hflip=True
         camera.start_preview()
         sleep(2)
-        campera.capture('/home/pi/Desktop/Photobooth/image.jpg)
+        camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
  
 def main():
