@@ -14,12 +14,14 @@ WINDOW_H = 100
 
 def createDisplay():
     global tk
-    v = StringVar()
+    global v
     # create the tk window - within which
     # everything else will be built.
+    v = StringVar()
     tk = Tk()
-    label = Label(tk, textvariable=v, bg="green", fg="white")
+    textlabel = Label(tk, textvariable=v, bg="green", fg="white")
     v.set("Click the button below to take a picture!")
+    textlabel.pack(fill=X)
     picBtn = Button(tk, text="Take a Picture", command=takeAPic)
     picBtn.pack(fill=X)
     #Add an exit button
@@ -33,6 +35,7 @@ def terminate():
     tk.destroy()
     
 def takeAPic():
+    global v
     with picamera.PiCamera() as camera:
         v.set("Starting up camera...")
         camera.led = False
