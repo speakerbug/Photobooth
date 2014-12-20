@@ -50,9 +50,9 @@ def takeAPic():
         v.set("Smile")
         camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
-        
+        sleep(1)
         v.set("Picture taken...Uplading online...")
-        
+        sleep(1)
         #upload online
         from poster.encode import multipart_encode
         from poster.streaminghttp import register_openers
