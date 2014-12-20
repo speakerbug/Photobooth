@@ -11,19 +11,20 @@ import picamera
 #Set display sizes
 WINDOW_W = 500
 WINDOW_H = 100
+
 def createDisplay():
     global tk
+    v = StringVar()
     # create the tk window - within which
     # everything else will be built.
     tk = Tk()
-    #Add a canvas area ready for drawing on
-    canvas = Canvas(tk, width=WINDOW_W, height=WINDOW_H)
-    canvas.pack(fill=X)
-    #Add an exit button
-    btn = Button(tk, text="Exit", command=terminate)
-    btn.pack()
+    label = Label(tk, textvariable=v, bg="green", fg="white")
+    v.set("Click the button below to take a picture!")
     picBtn = Button(tk, text="Take a Picture", command=takeAPic)
     picBtn.pack(fill=X)
+    #Add an exit button
+    btn = Button(tk, text="Exit", command=terminate)
+    btn.pack(fill=X)
     # Start the tk main-loop (this updates the tk display)
     tk.mainloop()
     
@@ -33,12 +34,21 @@ def terminate():
     
 def takeAPic():
     with picamera.PiCamera() as camera:
+        v.set("Starting up camera...")
         camera.led = False
         camera.hflip=True
         camera.start_preview()
-        sleep(2)
+        v.set("Takeing picture in 3 seconds...")
+        sleep(1)
+        v.set("Takeing picture in 2 seconds...")
+        sleep(1)
+        v.set("Takeing picture in 1 second...")
+        sleep(1)
+        v.set("Smile")
         camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
+        
+        v.set("Picture taken...Uplading online...")
         
         #upload online
         from poster.encode import multipart_encode
@@ -60,6 +70,7 @@ def takeAPic():
         request = urllib2.Request("http://henrysaniuk.com/upload/index.php", datagen, headers)
         # Actually do the request, and get the response
         print urllib2.urlopen(request).read()
+        v.set("Ready for another photo")
  
 def main():
     createDisplay()
