@@ -14,7 +14,6 @@ WINDOW_H = 100
 
 def createDisplay():
     global tk
-    global v
     # create the tk window - within which
     # everything else will be built.
     v = StringVar()
@@ -35,7 +34,6 @@ def terminate():
     tk.destroy()
     
 def takeAPic():
-    global v
     with picamera.PiCamera() as camera:
         v.set("Starting up camera...")
         camera.led = False
