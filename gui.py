@@ -16,17 +16,14 @@ def createDisplay():
     # create the tk window - within which
     # everything else will be built.
     tk = Tk()
-    w, h = tk.winfo_screenwidth(), tk.winfo_screenheight()
-    tk.overrideredirect(1)
-    tk.gemotery("%dx%d+0+0" % (w, h))
     #Add a canvas area ready for drawing on
-    #canvas = Canvas(tk, width=WINDOW_W, height=WINDOW_H)
-    #canvas.pack()
+    canvas = Canvas(tk, width=WINDOW_W, height=WINDOW_H)
+    canvas.pack(fill=X)
     #Add an exit button
     btn = Button(tk, text="Exit", command=terminate)
     btn.pack()
     picBtn = Button(tk, text="Take a Picture", command=takeAPic)
-    picBtn.pack()
+    picBtn.pack(fill=X)
     # Start the tk main-loop (this updates the tk display)
     tk.mainloop()
     
