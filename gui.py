@@ -45,7 +45,7 @@ def takeAPic():
         import urllib2
         
         # Register the streaming http handlers with urllib2
-        register   _openers()
+        register_openers()
         
         # Start the multipart/form-data encoding of the file "DSC0001.jpg"
         # "image1" is the name of the parameter, which is normally set
