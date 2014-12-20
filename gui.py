@@ -34,7 +34,7 @@ def terminate():
 def takeAPic():
     with picamera.PiCamera() as camera:
         camera.hflip=True
-        camera.start_preview(100,100,100,100)
+        camera.start_preview()
         sleep(2)
         camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
