@@ -42,7 +42,7 @@ def terminate():
     global tk
     tk.destroy()
 
-def checkForButton()
+def checkForButton():
 notPressed = True
 while notPressed:
     input_state = GPIO.input(18)
