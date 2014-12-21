@@ -34,23 +34,21 @@ def createDisplay():
     #Add an exit button
     btn = Button(tk, text="Exit", command=terminate)
     btn.pack(fill=X)
-    checkForButton()
     # Start the tk main-loop (this updates the tk display)
-    tk.mainloop()
+    checkForButton()
     
 def terminate():
     global tk
     tk.destroy()
 
 def checkForButton():
+    global tk
     notPressed = True
     while notPressed:
         input_state = GPIO.input(18)
-        char = sys.stdin.read(1)
         if input_state == False:
             notPressed = False
-        if char is 'e':
-            terminate()
+    tk.update()
     takeAPic()
     
 def takeAPic():
