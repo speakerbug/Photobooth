@@ -49,7 +49,7 @@ def checkForButton():
         char = sys.stdin.read(1)
         if input_state == False:
             notPressed = False
-        if char is 'e'
+        if char is 'e':
             terminate()
     takeAPic()
     
