@@ -8,7 +8,14 @@ from Tkinter import * #Note Tkinter for python 2.*, tkinter for python 3+
 from time import sleep
 import picamera
 import os
- 
+import RPi.GPIO as GPIO
+
+right_button = 3
+left_button = 5
+
+GPIO.setup(right_button, GPIO.IN)
+GPIO.setup(left_button, GPIO.IN)
+
 #Set display sizes
 WINDOW_W = 500
 WINDOW_H = 100
@@ -20,7 +27,7 @@ def createDisplay():
     # create the tk window - within which
     # everything else will be built.
     tk = Tk()
-    tk.attributes('-fullscreen', True)
+    #tk.attributes('-fullscreen', True)
     v = StringVar()
     v.set("Click the button below to take a picture!")
     textlabel = Label(tk, textvariable=v, bg="green", fg="black", font=("Helvetica", 45))
@@ -32,6 +39,13 @@ def createDisplay():
     btn.pack(fill=X)
     # Start the tk main-loop (this updates the tk display)
     tk.mainloop()
+    
+    while GPIO.input(left_button) and GPIO.input(right_button):
+        pass
+        if GPIO.input(left_button) == False:
+            print("Left button pressed")
+        if GPIO.input(right_button) == False:
+            print("Right button pressed")
     
 def terminate():
     global tk
