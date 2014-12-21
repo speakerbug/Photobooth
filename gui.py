@@ -36,6 +36,7 @@ def createDisplay():
     btn.pack(fill=X)
     # Start the tk main-loop (this updates the tk display)
     checkForButton()
+    tk.mainloop()
     
 def terminate():
     global tk
