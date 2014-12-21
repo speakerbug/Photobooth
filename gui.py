@@ -51,11 +51,15 @@ def takeAPic():
         camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
         sleep(1)
-        v.set("Picture taken...Uplading online...")
+        updateText("Picture taken...Uplading online...")
         print("Uploading online...")
         uploadPic()
         sleep(1)
         v.set("Ready for another photo")
+        
+def updateText(newV):
+    global v
+    v.set(newV)
  
 def uploadPic():
     #upload online
