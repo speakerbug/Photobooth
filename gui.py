@@ -52,6 +52,7 @@ def takeAPic():
         camera.stop_preview()
         sleep(1)
         v.set("Picture taken...Uplading online...")
+        print("Uploading online...)
         uploadPic()
         sleep(1)
         v.set("Ready for another photo")
