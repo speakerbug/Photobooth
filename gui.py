@@ -46,8 +46,11 @@ def checkForButton():
     notPressed = True
     while notPressed:
         input_state = GPIO.input(18)
+        char = sys.stdin.read(1)
         if input_state == False:
             notPressed = False
+        if char == 'e'
+            terminate()
     takeAPic()
     
 def takeAPic():
