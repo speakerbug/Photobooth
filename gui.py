@@ -9,7 +9,7 @@ from time import sleep
 import picamera
 import os
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 right_button = 3
 left_button = 5
