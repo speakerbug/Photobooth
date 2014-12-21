@@ -36,16 +36,19 @@ def createDisplay():
     btn.pack(fill=X)
     # Start the tk main-loop (this updates the tk display)
     tk.mainloop()
-    
-    while True:
-        input_state = GPIO.input(18)
-        if input_state == False:
-            print('Button Pressed')
-            time.sleep(0.2)
+    checkForButton()
     
 def terminate():
     global tk
     tk.destroy()
+
+def checkForButton()
+notPressed = True
+while notPressed:
+    input_state = GPIO.input(18)
+        if input_state == False:
+            notPressed = false
+takeAPic()
     
 def takeAPic():
     global v
@@ -66,6 +69,7 @@ def takeAPic():
     tk.update()
     v.set("Click the button below to take a picture!")
     tk.update()
+    checkForButton()
         
 def updateText(newV):
     global v
