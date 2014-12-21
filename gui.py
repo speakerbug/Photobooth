@@ -9,12 +9,13 @@ from time import sleep
 import picamera
 import os
 import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
 
 right_button = 3
 left_button = 5
 
-GPIO.setup(3, GPIO.IN, GPIO.PUD_UP)
-GPIO.setup(5, GPIO.IN, GPIO.PUD_UP)
+GPIO.setup(right_button, GPIO.IN)
+GPIO.setup(left_button, GPIO.IN)
 
 #Set display sizes
 WINDOW_W = 500
