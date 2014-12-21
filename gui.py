@@ -15,6 +15,7 @@ WINDOW_H = 100
 def createDisplay():
     global tk
     global v
+    global textlabel
     # create the tk window - within which
     # everything else will be built.
     tk = Tk()
@@ -36,6 +37,7 @@ def terminate():
     
 def takeAPic():
     global v
+    global textlabel
     with picamera.PiCamera() as camera:
         v.set("Starting up camera...")
         camera.led = False
@@ -51,8 +53,7 @@ def takeAPic():
         camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
         sleep(1)
-        updateText("Picture taken...Uplading online...")
-        print("Uploading online...")
+        self.textlabel.config(text='Picture taken...Uplading online...')
         uploadPic()
         sleep(1)
         v.set("Ready for another photo")
