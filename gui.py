@@ -11,11 +11,7 @@ import os
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
-right_button = 3
-left_button = 5
-
-GPIO.setup(right_button, GPIO.IN)
-GPIO.setup(left_button, GPIO.IN)
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 #Set display sizes
 WINDOW_W = 500
@@ -41,12 +37,11 @@ def createDisplay():
     # Start the tk main-loop (this updates the tk display)
     tk.mainloop()
     
-    while GPIO.input(left_button) and GPIO.input(right_button):
-        pass
-        if GPIO.input(left_button) == False:
-            print("Left button pressed")
-        if GPIO.input(right_button) == False:
-            print("Right button pressed")
+    while True:
+        input_state = GPIO.input(18)
+        if input_state == False:
+            print('Button Pressed')
+            time.sleep(0.2)
     
 def terminate():
     global tk
