@@ -38,25 +38,28 @@ def terminate():
 def takeAPic():
     global v
     global textlabel
-    with picamera.PiCamera() as camera:
-        v.set("Starting up camera...")
-        camera.led = False
-        camera.hflip=True
-        camera.start_preview()
-        v.set("Takeing picture in 3 seconds...")
-        sleep(1)
-        v.set("Takeing picture in 2 seconds...")
-        sleep(1)
-        v.set("Takeing picture in 1 second...")
-        sleep(1)
-        v.set("Smile")
-        camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
-        camera.stop_preview()
-        sleep(1)
-        textlabel.config(text='Picture taken...Uplading online...')
-        uploadPic()
-        sleep(1)
-        v.set("Ready for another photo")
+#    with picamera.PiCamera() as camera:
+#        v.set("Starting up camera...")
+#        camera.led = False
+#        camera.hflip=True
+#        camera.start_preview()
+#        v.set("Takeing picture in 3 seconds...")
+#        sleep(1)
+#        v.set("Takeing picture in 2 seconds...")
+#        sleep(1)
+#        v.set("Takeing picture in 1 second...")
+#        sleep(1)
+#        v.set("Smile")
+#        camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
+#        camera.stop_preview()
+#        sleep(1)
+#        textlabel.config(text="Picture taken...Uplading online...")
+#        uploadPic()
+#        sleep(1)
+#        v.set("Ready for another photo")
+
+    os.system("raspistill -ex antishake -o image.jpg -p 100,100,100,100")
+    uploadPic()
         
 def updateText(newV):
     global v
