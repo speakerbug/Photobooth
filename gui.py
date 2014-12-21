@@ -22,7 +22,7 @@ def createDisplay():
     tk = Tk()
     v = StringVar()
     v.set("Click the button below to take a picture!")
-    textlabel = Label(tk, text="Click the button below to take a picture!", bg="green", fg="black", font=("Helvetica", 24))
+    textlabel = Label(tk, textvariable=v, bg="green", fg="black", font=("Helvetica", 24))
     textlabel.pack(fill=X)
     picBtn = Button(tk, text="Take a Picture", command=takeAPic)
     picBtn.pack(fill=X)
@@ -44,13 +44,6 @@ def takeAPic():
 #        camera.led = False
 #        camera.hflip=True
 #        camera.start_preview()
-#        v.set("Takeing picture in 3 seconds...")
-#        sleep(1)
-#        v.set("Takeing picture in 2 seconds...")
-#        sleep(1)
-#        v.set("Takeing picture in 1 second...")
-#        sleep(1)
-#        v.set("Smile")
 #        camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
 #        camera.stop_preview()
 #        sleep(1)
@@ -58,8 +51,15 @@ def takeAPic():
 #        uploadPic()
 #        sleep(1)
 #        v.set("Ready for another photo")
-
+    v.set("Takeing picture in 3 seconds...")
+    sleep(1)
+    v.set("Takeing picture in 2 seconds...")
+    sleep(1)
+    v.set("Takeing picture in 1 second...")
+    sleep(1)
+    v.set("Smile")
     os.system("raspistill -ex antishake -o image.jpg -p 100,100,100,100")
+    v.set("Picture taken...Uplading online...")
     uploadPic()
         
 def updateText(newV):
