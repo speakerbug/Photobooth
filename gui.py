@@ -53,7 +53,7 @@ def takeAPic():
         camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
         camera.stop_preview()
         sleep(1)
-        self.textlabel.config(text='Picture taken...Uplading online...')
+        textlabel.config(text='Picture taken...Uplading online...')
         uploadPic()
         sleep(1)
         v.set("Ready for another photo")
