@@ -7,6 +7,7 @@ from Tkinter import * #Note Tkinter for python 2.*, tkinter for python 3+
 
 from time import sleep
 import picamera
+import os
  
 #Set display sizes
 WINDOW_W = 500
