@@ -40,6 +40,7 @@ def terminate():
 def takeAPic():
     global v
     global textlabel
+    global tk
 #    with picamera.PiCamera() as camera:
 #        v.set("Starting up camera...")
 #        camera.led = False
@@ -53,15 +54,21 @@ def takeAPic():
 #        sleep(1)
 #        v.set("Ready for another photo")
     v.set("Takeing picture in 3 seconds...")
+    tk.update()
     sleep(1)
     v.set("Takeing picture in 2 seconds...")
+    tk.update()
     sleep(1)
     v.set("Takeing picture in 1 second...")
+    tk.update()
     sleep(1)
     v.set("Smile")
+    tk.update()
     os.system("raspistill -ex antishake -o image.jpg -p 100,100,100,100")
     v.set("Picture taken...Uplading online...")
+    tk.update()
     uploadPic()
+    v.set("Ready to take another photo!")
         
 def updateText(newV):
     global v
