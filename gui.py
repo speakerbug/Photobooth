@@ -20,6 +20,7 @@ def createDisplay():
     # create the tk window - within which
     # everything else will be built.
     tk = Tk()
+    tk.attributes('-fullscreen', True)
     v = StringVar()
     v.set("Click the button below to take a picture!")
     textlabel = Label(tk, textvariable=v, bg="green", fg="black", font=("Helvetica", 24))
