@@ -43,11 +43,9 @@ def terminate():
     tk.destroy()
 
 def checkForButton():
-    global tk
     notPressed = True
     while notPressed:
         input_state = GPIO.input(18)
-        tk.update()
         if input_state == False:
             notPressed = False
     takeAPic()
