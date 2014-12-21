@@ -41,18 +41,6 @@ def takeAPic():
     global v
     global textlabel
     global tk
-#    with picamera.PiCamera() as camera:
-#        v.set("Starting up camera...")
-#        camera.led = False
-#        camera.hflip=True
-#        camera.start_preview()
-#        camera.capture('/home/pi/Desktop/Photobooth/image.jpg')
-#        camera.stop_preview()
-#        sleep(1)
-#        textlabel.config(text="Picture taken...Uplading online...")
-#        uploadPic()
-#        sleep(1)
-#        v.set("Ready for another photo")
     v.set("Taking picture in 3 seconds...")
     tk.update()
     sleep(1)
@@ -62,14 +50,11 @@ def takeAPic():
     v.set("Taking picture in 1 second...")
     tk.update()
     sleep(1)
+    v.set("Smile and freeze! It takes about a second to capture an image!")
+    tk.update()
     os.system("raspistill -ex antishake -o image.jpg -p 300,500,500,300")
-    v.set("Smile!")
     tk.update()
-    sleep(1)
-    v.set("Picture taken...Uploding online...")
-    tk.update()
-    uploadPic()
-    v.set("Ready to take another photo!")
+    v.set("Click the button below to take a picture!")
     tk.update()
         
 def updateText(newV):
