@@ -62,7 +62,7 @@ def takeAPic():
     v.set("Taking picture in 1 second...")
     tk.update()
     sleep(1)
-    os.system("raspistill -ex antishake -o image.jpg -p 100,100,100,100")
+    os.system("raspistill -ex antishake -o image.jpg -p 300,500,500,300")
     v.set("Smile!")
     tk.update()
     sleep(1)
