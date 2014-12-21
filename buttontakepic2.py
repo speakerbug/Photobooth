@@ -1,17 +1,27 @@
-import time
-import picamera
 import RPi.GPIO as GPIO
+
 GPIO.setmode(GPIO.BCM)
 
-right_button = 3
-left_button = 5
+GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
-GPIO.setup(right_button, GPIO.IN)
-GPIO.setup(left_button, GPIO.IN)
+GPIO.setup(24, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
-while GPIO.input(left_button) and GPIO.input(right_button):
-    pass
-    if GPIO.input(left_button) == False:
-        print("Left button pressed")
-    if GPIO.input(right_button) == False:
-        print("Right button pressed")
+while True:
+
+	GPIO.wait_for_edge(23, GPIO.RISING)
+
+	print(“Button 1 Pressed”)
+
+	GPIO.wait_for_edge(23, GPIO.FALLING)
+
+	print(“Button 1 Released”)
+
+	GPIO.wait_for_edge(24, GPIO.FALLING)
+
+	print(“Button 2 Pressed”)
+
+	GPIO.wait_for_edge(24, GPIO.RISING)
+
+	print(“Button 2 Released”)
+
+GPIO.cleanup()
