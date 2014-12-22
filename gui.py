@@ -79,7 +79,7 @@ def updateText(newV):
     global v
     v.set(newV)
     
-def delayMicroseconds(self, microseconds):
+def delayMicroseconds(microseconds):
     seconds = microseconds / float(1000000)  # divide microseconds by 1 million for seconds
     sleep(seconds)
     
