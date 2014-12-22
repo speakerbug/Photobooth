@@ -10,10 +10,11 @@ import picamera
 import os
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(7, GPIO.OUT) ## Setup GPIO Pin 7 to OUT
-GPIO.output(7,True) ## Turn on GPIO pin 7
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(17, GPIO.OUT)
 
 #Set display sizes
 WINDOW_W = 500
@@ -77,6 +78,92 @@ def takeAPic():
 def updateText(newV):
     global v
     v.set(newV)
+    
+def whiteLED():   
+    delayMicroseconds(408);
+    pulseIR(8820);
+    delayMicroseconds(4360);
+    pulseIR(640);
+    delayMicroseconds(480);
+    pulseIR(560);
+    delayMicroseconds(520);
+    pulseIR(560);
+    delayMicroseconds(520);
+    pulseIR(580);
+    delayMicroseconds(520);
+    pulseIR(580);
+    delayMicroseconds(520);
+    pulseIR(560);
+    delayMicroseconds(520);
+    pulseIR(580);
+    delayMicroseconds(520);
+    pulseIR(580);
+    delayMicroseconds(520);
+    pulseIR(560);
+    delayMicroseconds(1620);
+    pulseIR(580);
+    delayMicroseconds(1600);
+    pulseIR(640);
+    delayMicroseconds(1560);
+    pulseIR(620);
+    delayMicroseconds(1580);
+    pulseIR(580);
+    delayMicroseconds(1600);
+    pulseIR(640);
+    delayMicroseconds(1560);
+    pulseIR(620);
+    delayMicroseconds(1560);
+    pulseIR(600);
+    delayMicroseconds(1580);
+    pulseIR(660);
+    delayMicroseconds(440);
+    pulseIR(600);
+    delayMicroseconds(520);
+    pulseIR(560);
+    delayMicroseconds(1620);
+    pulseIR(580);
+    delayMicroseconds(520);
+    pulseIR(560);
+    delayMicroseconds(520);
+    pulseIR(580);
+    delayMicroseconds(520);
+    pulseIR(580);
+    delayMicroseconds(1600);
+    pulseIR(640);
+    delayMicroseconds(460);
+    pulseIR(580);
+    delayMicroseconds(1600);
+    pulseIR(640);
+    delayMicroseconds(1560);
+    pulseIR(620);
+    delayMicroseconds(460);
+    pulseIR(580);
+    delayMicroseconds(1640);
+    pulseIR(620);
+    delayMicroseconds(1560);
+    pulseIR(580);
+    delayMicroseconds(1600);
+    pulseIR(640);
+    delayMicroseconds(460);
+    pulseIR(580);
+    delayMicroseconds(1600);
+    pulseIR(640);
+    delayMicroseconds(38920);
+    pulseIR(8820);
+    delayMicroseconds(2160);
+    pulseIR(580);
+    
+def pulseIR(microsecs):
+    while microsecs > 0 {
+        # 38 kHz is about 13 microseconds high and 13 microseconds low
+        GPIO.output(17,GPIO.HIGH)  # this takes about 3 microseconds to happen
+        delayMicroseconds(10);         # hang out for 10 microseconds
+        GPIO.output(17,GPIO.LOW)   # this also takes about 3 microseconds
+        delayMicroseconds(10);         # hang out for 10 microseconds
+ 
+        # so 26 microseconds altogether
+        microsecs -= 26;
+  }
  
 def uploadPic():
     #upload online
