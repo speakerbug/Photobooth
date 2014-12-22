@@ -79,6 +79,9 @@ def updateText(newV):
     global v
     v.set(newV)
     
+def delayMicroseconds(microseconds):
+    sleep(microseconds / 1000000)
+    
 def whiteLED():   
     delayMicroseconds(408);
     pulseIR(8820);
