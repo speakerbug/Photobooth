@@ -8,7 +8,7 @@ def blink(pin):
         time.sleep(1)
         return
 # to use Raspberry Pi board pin numbers
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 # set up GPIO output channel
 GPIO.setup(11, GPIO.OUT)
 # blink GPIO17 50 times
