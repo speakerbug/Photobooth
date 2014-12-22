@@ -79,8 +79,9 @@ def updateText(newV):
     global v
     v.set(newV)
     
-def delayMicroseconds(microseconds):
-    sleep(microseconds / 1000000)
+def delayMicroseconds(self, microseconds):
+    seconds = microseconds / float(1000000)  # divide microseconds by 1 million for seconds
+    sleep(seconds)
     
 def whiteLED():   
     delayMicroseconds(408);
