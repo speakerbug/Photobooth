@@ -154,7 +154,7 @@ def whiteLED():
     pulseIR(580);
     
 def pulseIR(microsecs):
-    while microsecs > 0 {
+    while microsecs > 0:
         # 38 kHz is about 13 microseconds high and 13 microseconds low
         GPIO.output(17,GPIO.HIGH)  # this takes about 3 microseconds to happen
         delayMicroseconds(10);         # hang out for 10 microseconds
@@ -163,7 +163,6 @@ def pulseIR(microsecs):
  
         # so 26 microseconds altogether
         microsecs -= 26;
-  }
  
 def uploadPic():
     #upload online
