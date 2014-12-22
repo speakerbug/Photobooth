@@ -12,6 +12,8 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(16, GPIO.OUT) ## Setup GPIO Pin 7 to OUT
+GPIO.output(16,True) ## Turn on GPIO pin 7
 
 #Set display sizes
 WINDOW_W = 500
